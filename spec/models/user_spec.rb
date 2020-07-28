@@ -47,17 +47,17 @@ RSpec.describe User, type: :model do
   end
 
   describe '.authenticate_with_crendentials' do
-    it 'return user if email and password are matching' do
+    it 'expects not to be nil and pass if email and password are matching' do
       @user.save
       expect(User.authenticate_with_credentials("james@bond.com", "GoldenEye")).not_to be_nil
     end
 
-    it 'return user even if user types whitespace' do
+    it 'rexpects not to be nil and pass if user types whitespace' do
       @user.save
       expect(User.authenticate_with_credentials("    james@bond.com", "GoldenEye")).not_to be_nil
     end
 
-    it 'return user even if user types in the wrong case' do
+    it 'expects not to be nil and pass even if user types in the wrong case' do
       @user.save
       expect(User.authenticate_with_credentials("James@BoNd.CoM", "GoldenEye")).not_to be_nil
     end
